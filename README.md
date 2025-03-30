@@ -85,8 +85,9 @@ However, the **real problem is on the computer side**. After months of research,
 
 Using **raw Ethernet communication** simplifies device identification, reduces **latency**, and removes **OS-imposed restrictions** on networking parameters. This approach provides the **best real-time performance** without requiring expensive hardware or additional software layers.
 
-## Building, modify and testing
-The zip ETH8DACV2_VST_DEV contein ONLY the file wich contain the important sorce code (for build the vst3 you need to download vst3sdk, create a new project and copy the code from the folder in the proper directory) and the grapic element. 
+### Building, modify and testing
+
+The zip [ETH8DACV2_VST_DEV](https://github.com/eman8388/ETH8DACV2/blob/main/ETH8DACV2_VST3_DEV.zip) contein ONLY the file wich contain the important sorce code (for build the vst3 you need to download vst3sdk, create a new project and copy the code from the folder in the proper directory) and the grapic element. 
 
 
 ### 📜 Legal Disclaimer
