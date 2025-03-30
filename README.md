@@ -53,7 +53,7 @@ The best setup for this communication method is a **simple Layer 2 Ethernet swit
 
 ---
 
-## The Big Question: **Why Not Just Use UDP & Sockets?**
+### The Big Question: **Why Not Just Use UDP & Sockets?**
 
 Good question! 
 
