@@ -2,6 +2,94 @@
 
 # ETH8DACV2
 
-Example of comunication .vst3 application for ETHlink8DAC ethernet audio interface. Project: https://github.com/eman8388/ETHlink8DAC
+Open-source example of a communication .vst3 application for the **ETHlink8DAC** Ethernet audio interface. 
+Project repository: [ETHlink8DAC](https://github.com/eman8388/ETHlink8DAC).
+
+**Built for macOS M-series machines.**
+
+---
+
+## Main Features
+
+- Optimized for **macOS M-series** and fully tested on **Reaper** and **Ableton Live**.
+- Developed in **C** using the **Steinberg VST3 SDK**—fast, lightweight, and stable.
+- **Plug & Play**: Just load the VST3 on a **stereo or multichannel track**.
+- **Ultra-low latency** communication.
+- **No drivers required**, no setup hassle.
+- **Automatic reconnection**: If the connection drops, simply reconnect the device or network interface—no need to restart anything.
+- The **DAW’s sample rate and buffer size** automatically configure the device’s settings.
+
+---
+
+## How It Works
+
+This is a simple example of a **communication VST3 plugin** using **Berkeley Packet Filter (BPF)** to transmit and receive **raw Ethernet frames** through the **ETHlink8DAC** device.
+
+1. Connect the device to your **local network**.
+2. Attach the **Ethernet adapter** to your computer.
+3. Insert the **VST3 plugin** into a track in your favorite **DAW** (one instance per device on the network).
+4. From the UI:
+   - Select the **network interface** connected to the device.
+   - Choose the **serial number** of the target device.
+   - Press **Connect**—if the communication starts, the **red LED** on the UI will turn on, and the **status LED** on the device will turn **green**.
+   - The **Pass** button enables **pass-through mode**, allowing audio to bypass the plugin.
+
+The remaining UI elements are **self-explanatory**.
+
+---
+
+## 🛠️ Developer Insights
+
+> (USELESS! DON’T READ THIS SECTION! 🙃)
+
+The best setup for this communication method is a **simple Layer 2 Ethernet switch-based network** with as few switches in series as possible.
+
+### Porting to Other Systems
+
+- **Linux**: Easy! Linux natively supports **BPF** or **RAW sockets**, making direct raw Ethernet frame transmission straightforward.
+- **Windows**: Not so easy! Windows lacks native support for raw Ethernet frame transmission. However, I tested two potential solutions (**not published for legal reasons**):
+  1. **Using third-party network libraries and drivers (Npcap)** – Easy to implement and works very well.
+  2. **Developing a custom filter driver** to expose an IOControl interface to userspace – More complex, potentially more powerful, but with no significant performance gains over Npcap.
+
+---
+
+## The Big Question: **Why Not Just Use UDP & Sockets?**
+
+Good question! 
+
+From the device’s perspective, there’s no problem using standard **UDP/IP communication**. The device could use a ready-made **LWIP TCP/IP stack**, allowing it to communicate seamlessly with the computer over a traditional network. This would provide advantages like **Wi-Fi support** (since raw Ethernet frames aren’t compatible with Wi-Fi unless you have expensive APs that allow Layer 2 protocol translation). However, **Layer 2 communication is the fastest option** for an embedded system because it bypasses **LWIP overhead**, allowing direct interaction with the **MAC driver** of the MCU. This also enables **DMA-based packet transmission with system interrupts**, eliminating the need for a dedicated **RTOS task**. Additionally, using raw Ethernet allows compatibility with **affordable PoE switches**.
+
+However, the **real problem is on the computer side**. After months of research, the key reasons for avoiding **UDP/IP** are:
+
+### Performance & Control Issues
+
+1. **OS TCP/IP stacks introduce latency**
+   - Every OS processes all **IP, ICMP, and ARP** packets through the firewall, adding **delay and CPU overhead**.
+   - Even if you bypass some parts of the stack, **developers can’t fully control socket behavior**:
+     - **Watermarks & buffers**: The OS decides the actual buffer sizes and queue thresholds, ignoring developer-set values.
+     - **Queue management**: The OS dynamically handles socket queues, which can cause **latency spikes** and **sync issues**.
+
+2. **Device Identification Complexity**
+   - With raw Ethernet, devices are identified by **MAC address + serial number**.
+   - With UDP, devices are identified by **IP addresses**, which are **not static**.
+   - Identifying a device’s IP address requires complex and unreliable methods:
+     - **ICMP Broadcast Ping** – The best solution, but **blocked by most modern OSs**.
+     - **UDP Broadcast Ping** – Another option, but also restricted.
+     - **ARP Table Query** – OSs update their ARP tables **infrequently**, making this unreliable.
+     - **Other workarounds** exist but come with significant downsides.
+
+
+Using **raw Ethernet communication** simplifies device identification, reduces **latency**, and removes **OS-imposed restrictions** on networking parameters. This approach provides the **best real-time performance** without requiring expensive hardware or additional software layers.
+
+
+
+
+Eugenio Mancini 
+mancini97email@gmail.com
+
+
+
+
+
 
 
