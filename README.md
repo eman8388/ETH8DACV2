@@ -98,6 +98,7 @@ This project uses the **Steinberg VST3 SDK** under the **Steinberg VST3 License 
 VST is a trademark of **Steinberg Media Technologies GmbH**.
 For more details, visit the official Steinberg website: [Steinberg VST](https://www.steinberg.net/en/company/developer.html).
 
+---
 
 Eugenio Mancini\
  [mancini97email@gmail.com](mailto\:mancini97email@gmail.com)
