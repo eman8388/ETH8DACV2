@@ -21,6 +21,10 @@ Project repository: [ETHlink8DAC](https://github.com/eman8388/ETHlink8DAC).
 
 ---
 
+## Installation 
+
+    Simply copy [ETH8DACV2.vst3]() file in the vst3 system folder (or wherever you want) and rescanthe vst3 plugin in your DAW. 
+
 ## How It Works
 
 This is a simple example of a **communication VST3 plugin** using **Berkeley Packet Filter (BPF)** to transmit and receive **raw Ethernet frames** through the **ETHlink8DAC** device.
@@ -87,6 +91,8 @@ Using **raw Ethernet communication** simplifies device identification, reduces *
 This project uses the **Steinberg VST3 SDK** under the **Steinberg VST3 License Agreement**. 
 VST is a trademark of **Steinberg Media Technologies GmbH**.
 For more details, visit the official Steinberg website: [Steinberg VST](https://www.steinberg.net/en/company/developer.html).
+
+
 Eugenio Mancini 
 mancini97email@gmail.com
 
