@@ -82,8 +82,12 @@ However, the **real problem is on the computer side**. After months of research,
 Using **raw Ethernet communication** simplifies device identification, reduces **latency**, and removes **OS-imposed restrictions** on networking parameters. This approach provides the **best real-time performance** without requiring expensive hardware or additional software layers.
 
 
+### 📜 Legal Disclaimer
 
-
+This project uses the **Steinberg VST3 SDK** under the **Steinberg VST3 License Agreement**. 
+VST is a trademark of **Steinberg Media Technologies GmbH**.
+For more details, visit the official Steinberg website: [Steinberg VST](https://www.steinberg.net/en/company/developer.html).
+gg
 Eugenio Mancini 
 mancini97email@gmail.com
 
