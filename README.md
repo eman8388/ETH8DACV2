@@ -1,4 +1,4 @@
-![snapshot](https://github.com/emna8388/ETHlink8DAC/blob/main/snapshot_PCB/3D_ETHlink8xDAC_PCB.png)
+![snapshot](https://github.com/eman8388/ETH8DACV2/blob/main/screenshot/Screenshot%202025-03-30%20alle%2016.07.39.png)
 
 # ETH8DACV2
 
