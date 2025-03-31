@@ -1,6 +1,6 @@
 ![snapshot](https://github.com/eman8388/ETH8DACV2/blob/main/screenshot/Screenshot%202025-03-30%20alle%2016.07.39.png)
 
-# ETH8DACV2
+# ETH8DACV2 VST3 Plug-In
 
 Open-source example of a communication .vst3 application for the **ETHlink8DAC** Ethernet audio interface. 
 Project repository: [ETHlink8DAC](https://github.com/eman8388/ETHlink8DAC).
